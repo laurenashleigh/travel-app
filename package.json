@@ -1,0 +1,13 @@
+{
+  "name": "weather-journal-app",
+  "version": "1.0.0",
+  "description": "An asynchronous app to allow the user to access information including the live weather condition and temperature of a location in the USA, by imputing a post code.  This app uses a web API to access this data, then dynamically updates the UI with this information.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
