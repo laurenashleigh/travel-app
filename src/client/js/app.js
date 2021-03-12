@@ -26,7 +26,7 @@ let newDate = d.getDate()+' '+ month[d.getMonth()] + ' ' + d.getFullYear();
 //Async GET request API data
 const getCity = async (baseUrl, baseUrlTwo, newCity, apiKey) => {
     const response = await fetch(baseUrl+newCity+baseUrlTwo+apiKey)
-    console.log(response, 'url')
+    console.log('url', response)
     try {
         const newData = await response.json();
         console.log('data', newData)
@@ -37,15 +37,15 @@ const getCity = async (baseUrl, baseUrlTwo, newCity, apiKey) => {
 }
 
 //getData function
-const getGeoData = async (url) => {
-    const response = await fetch(url);
-    try {
-        const geoData = await response.json();
-        return geoData;
-    } catch (error) {
-        console.log("error", error)
-    }
-}
+// const getGeoData = async (url) => {
+//     const response = await fetch(url);
+//     try {
+//         const geoData = await response.json();
+//         return geoData;
+//     } catch (error) {
+//         console.log("error", error)
+//     }
+// }
 
 
 //Event listener to get weather data then post data to app then update the UI
@@ -59,8 +59,8 @@ const postToApp = (e) => {
     .then((data) => {
         console.log(newUserName);
         console.log(data, 'data')
-        console.log(data.geonames[0].lat, 'data geonames')
-        postData(`/geoadd`, {})
+        console.log('data geonames', data.geonames[0].lat)
+        postData(`/geoadd`, {userResponse: newUserResponse, userName: newUserName})
     })
     .then(() => {
         updateUI('/geoall');
@@ -74,6 +74,8 @@ const postData = async (url = '', data = {}) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     })
+    console.log('response', response)
+    console.log('response body', response.body)
     try {
         const newData = await response.json();
         return newData;

@@ -80,14 +80,6 @@ let geoProjectData = {};
 /* Geonames API */
 //GET & POST route for geoall
 app.get('/geoall', (req, res) => {
-    // let data = req.body;
-    // geoProjectData = {
-    //     longitude: data.lng,
-    //     latitude: data.lat,
-    //     country: data.countryName,
-    //     userResponse: data.userResponse,
-    //     userName: data.userName
-    // }
     res.send(geoProjectData)
     console.log(geoProjectData, 'georojectdata posted successfully!')
 })
@@ -99,7 +91,7 @@ app.get('/geoall', (req, res) => {
 
 //POST route
 app.post('/geoadd', (req, res) => {
-        let data = request.body;
+        let data = req.body;
         projectData = {
             // weather: data.weather,
             // temperature: data.temperature,
