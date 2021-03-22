@@ -12,6 +12,9 @@ module.exports = {
         library: 'Client'
     },
     mode: 'production',
+    devServer: {
+        port: 3000,
+    },
     module: {
         rules: [
             {

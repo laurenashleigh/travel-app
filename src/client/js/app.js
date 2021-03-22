@@ -1,12 +1,13 @@
 
 
-/* Global Variables */
+/* Geonames API */
 const baseUrl = 'http://api.geonames.org/searchJSON?q=';
 const baseUrlTwo = '&maxRows=1&username=';
 const apiKey = 'lauarmstrong';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
+
 let month = new Array();
 month[0] = "January";
 month[1] = "February";
@@ -53,16 +54,17 @@ const getCity = async (baseUrl, baseUrlTwo, newCity, apiKey) => {
 const postToApp = (e) => {
     console.log('button clicked');
     let newCity = document.getElementById('city').value;
-    let newUserResponse = document.getElementById('feelings').value;
+    let newDateInput = document.getElementById('date-input').value;
     let newUserName = document.getElementById('name').value;
     getCity(baseUrl, baseUrlTwo, newCity, apiKey)
     .then((data) => {
         console.log(newUserName);
         console.log(data, 'data')
         console.log('data geonames', data.geonames[0].lat)
-        postData(`/geoadd`, {userResponse: newUserResponse, userName: newUserName})
+        postData(`/geoadd`, {newDateInput, newUserName, longitude: data.geonames[0].lng, latitude: data.geonames[0].lat, country: data.geonames[0].countryName})
     })
-    .then(() => {
+    .then((data) => {
+        console.log('data2', data);
         updateUI('/geoall');
     })
 }
@@ -98,19 +100,25 @@ document.getElementById('generate').addEventListener('click', postToApp)
             // }
             // document.getElementById('generate').addEventListener('mouseover', validateZipcode)
             
-    
-
-//Update the UI
+            
+            //Update the UI
 const updateUI = async (url) => {
-    const response = await fetch(url)
+    const request = await fetch(url)
     try {
-        const allData = await response.json();
+        const allData = await request.json();
+        //Countdown
+        const currentDate = new Date();
+        const dateInput = new Date (document.getElementById('date-input').value)
+        const daysLeft = Math.ceil((dateInput - currentDate) / (3600 * 1000 * 24))
+        let newDateInput = dateInput.getDate()+' '+ month[dateInput.getMonth()] + ' ' + dateInput.getFullYear();
         console.log('all data', allData);
-        document.getElementById('weather').innerHTML = `It was ${allData.temperature} degrees and ${allData.lat}`;
-        document.getElementById('date').innerHTML = `On ${allData.lng}`;
-        document.getElementById('content').innerHTML = `${allData.userName} was feeling ${allData.countryName}`;
+        console.log('days left', daysLeft);
+        console.log('current date', currentDate);
+        document.getElementById('weather').innerHTML = `The weather will be: ${allData.longitude} degrees and ${allData.latitude}`;
+        document.getElementById('date').innerHTML = `Departing on: ${newDateInput}`;
+        document.getElementById('content').innerHTML = `${allData.newUserName}, ${daysLeft} days until you're travelling to ${allData.country}!`;
     } catch(error) {
-        console.log('error', error)
+        console.log('error', error);
     }
 }
 
