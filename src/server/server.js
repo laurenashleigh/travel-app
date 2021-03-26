@@ -51,11 +51,12 @@ app.get('/geoall', (req, res) => {
 //POST route
 app.post('/geoadd', (req, res) => {
         let data = req.body;
+        geoProjectData["newCity"] = data.newCity;
         geoProjectData["newDateInput"] = data.newDateInput;
         geoProjectData["newUserName"] = data.newUserName;
-        geoProjectData["latitude"] = data.latitude;
-        geoProjectData["longitude"] = data.longitude;
+        geoProjectData["temperature"] = data.temperature;
         geoProjectData["country"] = data.country;
+        geoProjectData["weather"] = data.weather;
         res.send(geoProjectData);
         console.log('Geo added successfully!')
     // Object.assign(geoProjectData, req.body);
