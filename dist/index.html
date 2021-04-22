@@ -20,14 +20,18 @@
     <input type="text" id="city" placeholder="enter city name here">
   </div>
   <div class ="holder feel">
-    <label for="date">What date are you going?</label>
-    <input type="date" class= "myInput" id="date-input" placeholder="dd/mm/yyyy" rows="9" cols="50" required >
+    <label for="date">What dates are you going?</label>
+    <span class="date-entry">
+      <input type="date" class= "date-input1" id="date-input" placeholder="dd/mm/yyyy" rows="9" cols="50" required >
+      <p>    ---    </p>
+      <input type="date" class= "date-input2" id="enddate-input" placeholder="dd/mm/yyyy" rows="9" cols="50" >
+    </span>
   </div>
   <div>
     <button id="generate" type = "submit"> Generate </button>
   </div>
   <div class ="holder entry">
-    <div class = "title"><strong>Previous Entry</strong></div>
+    <h3 class = "title" id="response-header"><strong>Your're travelling to...</strong></h3>
     <div id = "entryHolder">
       <div>
         <img id="city-image" src="https://www.eccireland.ie/wp-content/uploads/2013/06/HOlidays.jpg"/>

@@ -112,17 +112,16 @@ const postData = async (url = '', data = {}) => {
 
 document.getElementById('generate').addEventListener('click', postToApp)
 
-//Event listener to validate zip code entry meets criteria
-// const validateZipcode = () => {
-    //     if(document.getElementById('zip').value.length !== 5) {
-        //         alert('Please enter 5-digit zipcode')
-        //     };
-        //     var letters = /^[A-Za-z]+$/;
-        //     if(document.getElementById('zip').value.match(letters)) {
-            //         alert('US zip codes only! (no letters allowed)')
-            //     }
-            // }
-            // document.getElementById('generate').addEventListener('mouseover', validateZipcode)
+// Event listener to validate city name entry meets criteria
+const validateCityName = () => {
+    var letters = /^[A-Za-z]+$/;
+    if(document.getElementById('zip').value.match(letters)) {
+        return null;
+    } else {
+        alert('City names only! (no numbers allowed)')
+    }
+}
+document.getElementById('generate').addEventListener('mouseover', validateCityName)
             
             
             //Update the UI
@@ -132,17 +131,19 @@ const updateUI = async (allData) => {
         const pixabayImage = await request.json();
         //Countdown
         const currentDate = new Date();
-        const dateInput = new Date (document.getElementById('date-input').value)
-        const daysLeft = Math.ceil((dateInput - currentDate) / (3600 * 1000 * 24))
+        const dateInput = new Date (document.getElementById('date-input').value);
+        const endDate = new Date (document.getElementById('enddate-input').value);
+        const daysLeft = Math.ceil((dateInput - currentDate) / (3600 * 1000 * 24));
+        const tripDays = Math.ceil((endDate- dateInput) / (3600 * 1000 * 24));
         let newDateInput = dateInput.getDate()+' '+ month[dateInput.getMonth()] + ' ' + dateInput.getFullYear();
-        console.log('all data', allData);
-        console.log('days left', daysLeft);
-        console.log('current date', currentDate);
-        console.log('pixaimage', pixabayImage);
-        document.getElementById('weather').innerHTML = `The weather will be ${allData.temperature} degrees and ${allData.weather}`;
-        document.getElementById('date').innerHTML = `Departing on: ${newDateInput}`;
+
+        //Return default image if no image available
+        const pixaSrc = pixabayImage.hits[0].webformatURL ? pixabayImage.hits[0].webformatURL : 'https://www.umthunzi.co.za/2016/wp-content/uploads/2017/02/Benefits-Family-Holiday-1.jpg';
+        document.getElementById('response-header').innerText = `You're travelling to ${allData.newCity}!!`
+        document.getElementById('weather').innerHTML = `<strong>The weather will be ${allData.temperature} degrees and ${allData.weather}</strong>`;
+        document.getElementById('date').innerHTML = `You'll be leaving on ${newDateInput} and staying for ${tripDays} days`;
         document.getElementById('content').innerHTML = `${allData.newUserName}, ${daysLeft} days until you're travelling to ${allData.newCity}!`;
-        document.getElementById('city-image').setAttribute('src', pixabayImage.hits[0].webformatURL);
+        document.getElementById('city-image').setAttribute('src', pixaSrc);
     } catch(error) {
         console.log('error', error);
     }
