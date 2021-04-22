@@ -56,6 +56,11 @@ input {
     font-family: 'Oswald', sans-serif;
     border: none;
 }
+input:hover {
+    border-width: 2px;
+    border-color: black;
+    border-style: inset;
+}
 .holder {
     width: 90%;
 }
@@ -86,6 +91,12 @@ button{
     box-shadow: 2px 4px 5px #444;
 
 }
+
+button:hover {
+    background: black;
+    color: #f0d43a;
+}
+
 h1{
     font-size: 36px;
     text-decoration: underline;

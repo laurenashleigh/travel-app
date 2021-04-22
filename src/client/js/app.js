@@ -127,6 +127,7 @@ document.getElementById('generate').addEventListener('mouseover', validateCityNa
             //Update the UI
 const updateUI = async (allData) => {
     const request = await fetch(pixabayBaseUrl + pixabayApi + '&q=' + allData.newCity + '+&image_type=illustration');
+
     try {
         const pixabayImage = await request.json();
         //Countdown
@@ -149,4 +150,4 @@ const updateUI = async (allData) => {
     }
 }
 
-export default postToApp;
+module.exports = {postToApp};
