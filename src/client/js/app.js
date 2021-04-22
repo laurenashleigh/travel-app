@@ -149,3 +149,4 @@ const updateUI = async (allData) => {
     }
 }
 
+export default postToApp;

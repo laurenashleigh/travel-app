@@ -1,4 +1,6 @@
-//import { MainFunction } from './js/app'
+import {postToApp} from './js/app';
 import './styles/style.scss';
 
-//export {MainFunction}
+export {postToApp};
+
+

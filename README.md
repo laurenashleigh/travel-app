@@ -1,3 +1,13 @@
 # Weather-Journal App Project
-An asynchronous app to allow the user to access information including the live weather condition and temperature of a location in the USA, by imputing a post code. 
-This app uses a web API to access this data, then dynamically updates the UI with this information. 
+An asynchronous app to allow the user to access information including the live and future weather conditions and temperature of a location in the world, by imputing a city name. 
+This app uses web APIs to access this data, then dynamically updates the UI with this information. 
+
+Start the app using the commands:
+yarn build-prod
+yarn build-dev
+yarn start
+
+Extend your project:
+- App allows user to include end date and displays trip length
+- App pulls image from Pixabay API to always provide an image even when location has none
+- 

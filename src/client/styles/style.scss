@@ -1,3 +1,4 @@
+//@media responsive for mobile 
 body{
     background: #fffff8;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -7,13 +8,20 @@ body{
     display: grid;
     grid-auto-rows: minmax(auto, auto);
     /* grid-template-columns:  */
-    background: #7ed2bb;
+    background: lightgrey;
     color: #585252;
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 20px;
+}
+
+#city-image {
+    @media (max-width:600px) {
+        width: 450px;
+    }
+    width: 100%;
 }
 
 .entry{
@@ -33,7 +41,12 @@ label{
     font-size: 27px;
 }
 
-input{
+input {
+    @media (max-width:600px) {
+        width: 500px;
+        padding: 0px;
+        margin: 0px;
+    }
     display:block;
     height: 60px;
     width: 320px;
@@ -43,10 +56,13 @@ input{
     font-family: 'Oswald', sans-serif;
     border: none;
 }
+.holder {
+    width: 90%;
+}
 
 .date-input1 {
     width: 180px;
-    margin-right: 20px
+    margin-right: 20px;
 }
 
 .date-input2 {
@@ -55,6 +71,11 @@ input{
 }
 
 button{
+    @media (max-width:600px) {
+        width: 500px;
+        padding: 0px;
+        margin: 0px;
+    }
     width: 150px;
     height: 60px;
     background: #f0d43a;
@@ -63,6 +84,7 @@ button{
     font-family: 'Oswald', sans-serif;
     border: none;
     box-shadow: 2px 4px 5px #444;
+
 }
 h1{
     font-size: 36px;
