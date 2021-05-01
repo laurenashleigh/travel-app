@@ -140,7 +140,7 @@ const updateUI = async (allData) => {
 
         //Return default image if no image available
         const pixaSrc = pixabayImage.hits[0].webformatURL ? pixabayImage.hits[0].webformatURL : 'https://www.umthunzi.co.za/2016/wp-content/uploads/2017/02/Benefits-Family-Holiday-1.jpg';
-        // const icon = `src/client/media/icons/${allData.icon}.png`;
+        // const icon = `../media/icons/${allData.icon}.png`;
         const icon2 = `https://www.weatherbit.io/static/img/icons/${allData.icon}.png`;
         document.getElementById('response-header').innerText = `You're travelling to ${allData.newCity}!!`
         document.getElementById('weather').innerHTML = `<strong>The weather will be ${allData.temperature} degrees and ${allData.weather}</strong>`;
