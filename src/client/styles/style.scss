@@ -19,7 +19,7 @@ body{
 
 #city-image {
     @media (max-width:600px) {
-        width: 450px;
+        width: 90%;
     }
     width: 100%;
 }
@@ -43,9 +43,8 @@ label{
 
 input {
     @media (max-width:600px) {
-        width: 500px;
-        padding: 0px;
-        margin: 0px;
+        width: 90%;
+        margin: 20px;
     }
     display:block;
     height: 60px;
@@ -77,9 +76,9 @@ input:hover {
 
 button{
     @media (max-width:600px) {
-        width: 500px;
+        width: 90%;
         padding: 0px;
-        margin: 0px;
+        margin: 20px;
     }
     width: 150px;
     height: 60px;

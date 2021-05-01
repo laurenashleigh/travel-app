@@ -57,6 +57,7 @@ app.post('/geoadd', (req, res) => {
         geoProjectData["temperature"] = data.temperature;
         geoProjectData["country"] = data.country;
         geoProjectData["weather"] = data.weather;
+        geoProjectData["icon"] = data.icon;
         res.send(geoProjectData);
         console.log('Geo added successfully!')
     // Object.assign(geoProjectData, req.body);

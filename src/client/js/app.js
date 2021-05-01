@@ -83,7 +83,7 @@ const postToApp = (e) => {
     })
     .then((weatherData) => {
         const tempCelsius = Math.round((weatherData.data[0].temp -32) *5/9);
-        const allData = postData(`/geoadd`, {newCity, newDateInput, newUserName, temperature: tempCelsius, weather: weatherData.data[0].weather.description})
+        const allData = postData(`http://localhost:8080/geoadd`, {newCity, newDateInput, newUserName, temperature: tempCelsius, weather: weatherData.data[0].weather.description, icon: weatherData.data[0].weather.icon})
         console.log('ALL DATA', allData);
         console.log('weatherdata', weatherData);
         return allData;
@@ -115,7 +115,7 @@ document.getElementById('generate').addEventListener('click', postToApp)
 // Event listener to validate city name entry meets criteria
 const validateCityName = () => {
     var letters = /^[A-Za-z]+$/;
-    if(document.getElementById('zip').value.match(letters)) {
+    if(document.getElementById('city').value.match(letters)) {
         return null;
     } else {
         alert('City names only! (no numbers allowed)')
@@ -140,11 +140,14 @@ const updateUI = async (allData) => {
 
         //Return default image if no image available
         const pixaSrc = pixabayImage.hits[0].webformatURL ? pixabayImage.hits[0].webformatURL : 'https://www.umthunzi.co.za/2016/wp-content/uploads/2017/02/Benefits-Family-Holiday-1.jpg';
+        // const icon = `src/client/media/icons/${allData.icon}.png`;
+        const icon2 = `https://www.weatherbit.io/static/img/icons/${allData.icon}.png`;
         document.getElementById('response-header').innerText = `You're travelling to ${allData.newCity}!!`
         document.getElementById('weather').innerHTML = `<strong>The weather will be ${allData.temperature} degrees and ${allData.weather}</strong>`;
         document.getElementById('date').innerHTML = `You'll be leaving on ${newDateInput} and staying for ${tripDays} days`;
         document.getElementById('content').innerHTML = `${allData.newUserName}, ${daysLeft} days until you're travelling to ${allData.newCity}!`;
         document.getElementById('city-image').setAttribute('src', pixaSrc);
+        document.getElementById('weather-image').setAttribute('src', icon2);
     } catch(error) {
         console.log('error', error);
     }

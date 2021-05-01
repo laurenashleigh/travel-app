@@ -1,4 +1,4 @@
-import {postToApp} from './app';
+import {postToApp} from '../src/client/js/app';
 
 describe('function: postToApp', () => {
     it('should be a function', () => {
