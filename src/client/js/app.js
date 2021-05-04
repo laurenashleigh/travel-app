@@ -110,7 +110,7 @@ const postData = async (url = '', data = {}) => {
     }
 }
 
-document.getElementById('generate').addEventListener('click', postToApp)
+// document.getElementById('generate').addEventListener('click', postToApp)
 
 // Event listener to validate city name entry meets criteria
 const validateCityName = () => {

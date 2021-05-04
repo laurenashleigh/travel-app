@@ -63,3 +63,4 @@ app.post('/geoadd', (req, res) => {
     // Object.assign(geoProjectData, req.body);
     // res.send(true);
 })
+module.exports = {app}
