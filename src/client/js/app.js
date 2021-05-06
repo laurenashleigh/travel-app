@@ -29,9 +29,6 @@ month[9] = "October";
 month[10] = "November";
 month[11] = "December";
 
-// Globally defined variables
-let newCity = document.getElementById('city').value;
-
 //Async GET request API data
 const getCity = async (baseUrl, baseUrlTwo, newCity, apiKey) => {
     const response = await fetch(baseUrl+newCity+baseUrlTwo+apiKey)
@@ -55,20 +52,7 @@ const getWeather = async (latitude, longitude, dateInput) => {
     }
 }
 
-//getData function
-// const getGeoData = async (url) => {
-//     const response = await fetch(url);
-//     try {
-//         const geoData = await response.json();
-//         return geoData;
-//     } catch (error) {
-//         console.log("error", error)
-//     }
-// }
-
-
 //Event listener to get weather data then post data to app then update the UI
-//userResponse: newUserResponse, userName: newUserName, longitude: data.geonames[0].lng, latitude: data.geonames[0].lat, country: data.geonames[0].countryName
 const postToApp = (e) => {
     console.log('button clicked');
     let newCity = document.getElementById('city').value;
@@ -110,7 +94,9 @@ const postData = async (url = '', data = {}) => {
     }
 }
 
-// document.getElementById('generate').addEventListener('click', postToApp)
+export const executePostToApp = () => {
+    document.getElementById('generate').addEventListener('click', postToApp)
+}
 
 // Event listener to validate city name entry meets criteria
 const validateCityName = () => {
@@ -118,10 +104,10 @@ const validateCityName = () => {
     if(document.getElementById('city').value.match(letters)) {
         return null;
     } else {
-        alert('City names only! (no numbers allowed)')
+        alert('Enter a valid city name!')
     }
 }
-document.getElementById('generate').addEventListener('mouseover', validateCityName)
+export const eventListener = () => {document.getElementById('generate').addEventListener('mouseover', validateCityName)}
             
             
             //Update the UI
@@ -152,5 +138,3 @@ const updateUI = async (allData) => {
         console.log('error', error);
     }
 }
-
-module.exports = {postToApp};

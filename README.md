@@ -9,6 +9,9 @@ yarn start
 
 Enter and city and your trip dates
 
+Test the app using:
+npm test
+
 Extend your project:
 - App allows user to include end date and displays trip length
 - App pulls image from Pixabay API to always provide an image even when location has none

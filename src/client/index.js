@@ -1,6 +1,8 @@
-import {postToApp} from './js/app';
+import {executePostToApp, eventListener} from './js/app';
 import './styles/style.scss';
+eventListener();
+executePostToApp();
 
-export default {postToApp};
+export default executePostToApp;
 
 

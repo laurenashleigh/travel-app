@@ -82,13 +82,18 @@ var Client =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./src/client/js/app.js
 //const { catch } = require("fetch-mock");
 
 
@@ -146,20 +151,7 @@ const getWeather = async (latitude, longitude, dateInput) => {
     }
 }
 
-//getData function
-// const getGeoData = async (url) => {
-//     const response = await fetch(url);
-//     try {
-//         const geoData = await response.json();
-//         return geoData;
-//     } catch (error) {
-//         console.log("error", error)
-//     }
-// }
-
-
 //Event listener to get weather data then post data to app then update the UI
-//userResponse: newUserResponse, userName: newUserName, longitude: data.geonames[0].lng, latitude: data.geonames[0].lat, country: data.geonames[0].countryName
 const postToApp = (e) => {
     console.log('button clicked');
     let newCity = document.getElementById('city').value;
@@ -172,9 +164,9 @@ const postToApp = (e) => {
         const weatherData = getWeather(latitude, longitude, newDateInput);
         return weatherData;
     })
-    .then( async (weatherData) => {
+    .then((weatherData) => {
         const tempCelsius = Math.round((weatherData.data[0].temp -32) *5/9);
-        const allData = await postData(`http://localhost:8080/geoadd`, {newCity, newDateInput, newUserName, temperature: tempCelsius, weather: weatherData.data[0].weather.description, icon: weatherData.data[0].weather.icon})
+        const allData = postData(`http://localhost:8080/geoadd`, {newCity, newDateInput, newUserName, temperature: tempCelsius, weather: weatherData.data[0].weather.description, icon: weatherData.data[0].weather.icon})
         console.log('ALL DATA', allData);
         console.log('weatherdata', weatherData);
         return allData;
@@ -201,7 +193,9 @@ const postData = async (url = '', data = {}) => {
     }
 }
 
-document.getElementById('generate').addEventListener('click', postToApp)
+const executePostToApp = () => {
+    document.getElementById('generate').addEventListener('click', postToApp)
+}
 
 // Event listener to validate city name entry meets criteria
 const validateCityName = () => {
@@ -209,10 +203,10 @@ const validateCityName = () => {
     if(document.getElementById('city').value.match(letters)) {
         return null;
     } else {
-        alert('City names only! (no numbers allowed)')
+        alert('Enter a valid city name!')
     }
 }
-document.getElementById('generate').addEventListener('mouseover', validateCityName)
+const eventListener = () => {document.getElementById('generate').addEventListener('mouseover', validateCityName)}
             
             
             //Update the UI
@@ -231,7 +225,7 @@ const updateUI = async (allData) => {
 
         //Return default image if no image available
         const pixaSrc = pixabayImage.hits[0].webformatURL ? pixabayImage.hits[0].webformatURL : 'https://www.umthunzi.co.za/2016/wp-content/uploads/2017/02/Benefits-Family-Holiday-1.jpg';
-        const icon = `src/client/media/icons/${allData.icon}.png`;
+        // const icon = `../media/icons/${allData.icon}.png`;
         const icon2 = `https://www.weatherbit.io/static/img/icons/${allData.icon}.png`;
         document.getElementById('response-header').innerText = `You're travelling to ${allData.newCity}!!`
         document.getElementById('weather').innerHTML = `<strong>The weather will be ${allData.temperature} degrees and ${allData.weather}</strong>`;
@@ -243,28 +237,16 @@ const updateUI = async (allData) => {
         console.log('error', error);
     }
 }
-
-module.exports = {postToApp};
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: ./src/client/js/app.js
-var app = __webpack_require__(0);
-
 // CONCATENATED MODULE: ./src/client/styles/style.scss
 // extracted by mini-css-extract-plugin
 
 // CONCATENATED MODULE: ./src/client/index.js
 
 
+eventListener();
+executePostToApp();
 
-/* harmony default export */ var client = __webpack_exports__["default"] = ({postToApp: app["postToApp"]});
+/* harmony default export */ var client = __webpack_exports__["default"] = (executePostToApp);
 
 
 

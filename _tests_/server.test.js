@@ -1,4 +1,4 @@
-const app = require('../src/server/server.js') // Link to your server file
+const app = require("../src/server/app.js"); // Link to your server file
 const supertest = require('supertest')
 const request = supertest(app)
 it('Testing /all endpoint', async done => {
