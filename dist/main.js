@@ -111,22 +111,7 @@ const pixabayBaseUrl = 'https://pixabay.com/api/?key=';
 const pixabayApi = '20825092-adac6544cffffad2ebb93dcf1';
 // Create a new date instance dynamically with JS
 
-let month = new Array();
-month[0] = "January";
-month[1] = "February";
-month[2] = "March";
-month[3] = "April";
-month[4] = "May";
-month[5] = "June";
-month[6] = "July";
-month[7] = "August";
-month[8] = "September";
-month[9] = "October";
-month[10] = "November";
-month[11] = "December";
-
-// Globally defined variables
-let newCity = document.getElementById('city').value;
+let month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 //Async GET request API data
 const getCity = async (baseUrl, baseUrlTwo, newCity, apiKey) => {
@@ -137,7 +122,9 @@ const getCity = async (baseUrl, baseUrlTwo, newCity, apiKey) => {
         console.log('data', newData)
         return newData;
     } catch(error) {
-        console.log('error'. error);
+        console.log('error getting city'. error);
+        document.getElementById('error').innerText = 'There was an error getting the city data';
+
     }
 }
 
@@ -147,7 +134,8 @@ const getWeather = async (latitude, longitude, dateInput) => {
         const weatherData = await request.json();
         return weatherData;
     } catch(error) {
-        console.log('error', error);
+        console.log('error getting weather', error);
+        //document.getElementById('error').innerText = 'There was an error getting the weather data';
     }
 }
 
@@ -189,7 +177,8 @@ const postData = async (url = '', data = {}) => {
         const newData = await response.json();
         return newData;
     } catch(error) {
-        console.log('error', error)
+        console.log('error posting data', error)
+        //document.getElementById('error').innerText = 'There was an error posting the data';
     }
 }
 
@@ -233,10 +222,16 @@ const updateUI = async (allData) => {
         document.getElementById('content').innerHTML = `${allData.newUserName}, ${daysLeft} days until you're travelling to ${allData.newCity}!`;
         document.getElementById('city-image').setAttribute('src', pixaSrc);
         document.getElementById('weather-image').setAttribute('src', icon2);
+        document.getElementById('error').innerHTML = '<h1>There was an error posting the data</h1>';
+
     } catch(error) {
-        console.log('error', error);
+        console.log('error updating UI', error);
+        //document.getElementById('error').innerText = 'There was an error updating the web page';
+
     }
 }
+
+
 // CONCATENATED MODULE: ./src/client/styles/style.scss
 // extracted by mini-css-extract-plugin
 

@@ -2,11 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1, user-scalable=0" />
 <title>Weather Journal</title>
 <link href="main.css" rel="stylesheet"></head>
  <body>
 <div id = "app">
+  <h1 class="error"></h1>
   <h1 class ="holder headline">
     Plan Your Trip!
   </h1>
@@ -22,14 +23,14 @@
     <label for="date">What dates are you going?</label>
     <span class="date-entry">
       <input type="date" class= "date-input1" id="date-input" placeholder="dd/mm/yyyy" rows="9" cols="50" required >
-      <p>    ---    </p>
+      <p>    -    </p>
       <input type="date" class= "date-input2" id="enddate-input" placeholder="dd/mm/yyyy" rows="9" cols="50" >
     </span>
   </div>
   <div>
     <button id="generate" type = "submit"> Generate </button>
   </div>
-  <div class ="holder entry">
+  <div class =" entry">
     <h3 class = "title" id="response-header"><strong>Your're travelling to...</strong></h3>
     <div id = "entryHolder">
       <div>
@@ -44,13 +45,13 @@
     </div>
   </div>
 </div>
-<!-- <script>
+<script>
   if ('serviceWorker' in navigator) {
       // Use the window load event to keep the page load performant
       window.addEventListener('load', () => {
           navigator.serviceWorker.register('/service-worker.js');
       });
   }
-</script> -->
+</script>
 <script type="text/javascript" src="main.js"></script></body>
 </html>

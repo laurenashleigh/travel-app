@@ -27,11 +27,6 @@ app.get('/geoall', (req, res) => {
     console.log(geoProjectData, 'georojectdata posted successfully!')
 })
 
-// app.post('/geoall', (req, res) => {
-//     res.send(geoProjectData);
-//     console.log('Geo posted successfully!')
-// })
-
 //POST route
 app.post('/geoadd', (req, res) => {
         let data = req.body;
@@ -44,7 +39,5 @@ app.post('/geoadd', (req, res) => {
         geoProjectData["icon"] = data.icon;
         res.send(geoProjectData);
         console.log('Geo added successfully!')
-    // Object.assign(geoProjectData, req.body);
-    // res.send(true);
 })
 module.exports = app

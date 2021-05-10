@@ -1,7 +1,7 @@
-import {executePostToApp} from '../src/client/index';
+import {postToApp} from '../src/client/js/app';
 
 describe('function: postToApp', () => {
     it('should be a function', () => {
-        expect(typeof executePostToApp).toBe("function");
+        expect(typeof postToApp).toBe("function");
     })
 })
