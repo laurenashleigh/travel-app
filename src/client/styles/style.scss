@@ -7,9 +7,12 @@ body{
 }
 
 #app{
+    @media (max-width:600px) {
+        grid-auto-columns: 100%;
+    }
     display: grid;
     grid-auto-rows: minmax(auto, auto);
-    grid-auto-columns: 100%;
+    grid-auto-columns: 30%;
     background: lightgrey;
     color: #585252;
     justify-content: center;
@@ -148,8 +151,7 @@ button:focus {
 
 }
 
-.error {
+#error {
     color: red;
-    background: white;
     padding: 2px;
 }

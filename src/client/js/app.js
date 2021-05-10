@@ -27,7 +27,7 @@ const getCity = async (baseUrl, baseUrlTwo, newCity, apiKey) => {
         return newData;
     } catch(error) {
         console.log('error getting city'. error);
-        document.getElementById('error').innerText = 'There was an error getting the city data';
+        document.getElementById('error').innerHTML = '<h3>There was an error getting the city data</h3>';
 
     }
 }
@@ -39,7 +39,7 @@ const getWeather = async (latitude, longitude, dateInput) => {
         return weatherData;
     } catch(error) {
         console.log('error getting weather', error);
-        //document.getElementById('error').innerText = 'There was an error getting the weather data';
+        document.getElementById('error').innerHTML = '<h3>There was an error getting the weather data</h3>';
     }
 }
 
@@ -82,7 +82,7 @@ const postData = async (url = '', data = {}) => {
         return newData;
     } catch(error) {
         console.log('error posting data', error)
-        //document.getElementById('error').innerText = 'There was an error posting the data';
+        document.getElementById('error').innerHTML = '<h3>There was an error posting the data</h3>';
     }
 }
 
@@ -126,12 +126,10 @@ const updateUI = async (allData) => {
         document.getElementById('content').innerHTML = `${allData.newUserName}, ${daysLeft} days until you're travelling to ${allData.newCity}!`;
         document.getElementById('city-image').setAttribute('src', pixaSrc);
         document.getElementById('weather-image').setAttribute('src', icon2);
-        document.getElementById('error').innerHTML = '<h1>There was an error posting the data</h1>';
 
     } catch(error) {
         console.log('error updating UI', error);
-        //document.getElementById('error').innerText = 'There was an error updating the web page';
-
+        document.getElementById('error').innerHTML = '<h3>There was an error updating the web page</h3>';
     }
 }
 
